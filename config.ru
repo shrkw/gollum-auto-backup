@@ -4,6 +4,9 @@ require 'gollum/app'
 
 require './precious'
 require './app'
+require './macros'
+
+extend Gollum
 
 $stdout.sync = true
 
