@@ -1,5 +1,5 @@
 {
-  "name": "Gollum on Heroku with BitBucket",
+  "name": "Gollum on Heroku w/ BitBucket",
   "description": "auto generate git powered wiki Gollum to Heroku synchronized with BitBucket.",
   "repository": "https://github.com/shrkw/gollum-auto-backup",
   "env": {
