@@ -49,7 +49,7 @@ class App
       template_dir: @gollum_template_dir,
       universal_toc: @gollum_universal_toc,
       repo_is_bare: @gollum_is_bare
-    })
+    }
   end
 
   def set_repo
