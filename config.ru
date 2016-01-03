@@ -3,18 +3,15 @@ require 'rubygems'
 require 'gollum/app'
 
 require './precious'
+require './app'
 
-#gollum_path = File.expand_path(File.dirname(__FILE__)) # CHANGE THIS TO POINT TO YOUR OWN WIKI REPO
-gollum_path = '/tmp/gollumwiki'
+$stdout.sync = true
 
-wiki = Gollum::Wiki.new(gollum_path)
-Gollum::Hook.register(:post_commit, :hook_id) do |committer, sha1|
-  wiki.repo.git.pull("origin", "master")
-  wiki.repo.git.push("origin", "master")
-end
+app = App.new
+app.set_repo
+app.set_hook
 
-wiki_options = {:universal_toc => true}
-Precious::App.set(:gollum_path, gollum_path)
+Precious::App.set(:gollum_path, app.repo_name)
 Precious::App.set(:default_markup, :markdown) # set your favorite markup language
-Precious::App.set(:wiki_options, wiki_options)
+Precious::App.set(:wiki_options, app.wiki_options)
 run Precious::App
