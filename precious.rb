@@ -1,8 +1,12 @@
+require 'logger'
+
 module Precious
   class App < Sinatra::Base
+    logger = Logger.new(STDERR)
     basic_auth_username = ENV['BASIC_AUTH_USERNAME']
     basic_auth_password = ENV['BASIC_AUTH_PASSWORD']
     if basic_auth_username && basic_auth_password
+      logger.info('Enabled basic auth')
       before do
         authorize
       end
